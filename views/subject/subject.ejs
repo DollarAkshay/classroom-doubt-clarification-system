@@ -74,8 +74,27 @@
 
     <script src="/js/index.js"></script>
     <script src="/js/post.js"></script>
-    <script src="/js/subject.js"></script>
     <script src="/js/sort.js"></script>
+
+    <script>
+        var subject = "<%= info.name %>";
+
+        $("document").ready(function () {
+
+            $.get("https://pixabay.com/api/", {
+                    key: "13142865-8f8270cd4f96b2ce3f3ea82dd",
+                    q: subject
+                })
+                .done(function (data) {
+
+                    if (data.hits.length >= 5) {
+                        var imageURL = data.hits[4].largeImageURL;
+                        console.log("Image URL :", imageURL);
+                        $('.jumbotron').css('background-image', 'url(' + imageURL + ')');
+                    }
+                });
+        });
+    </script>
 
 </body>
 
