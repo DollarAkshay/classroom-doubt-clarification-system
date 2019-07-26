@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<%- include('../partials/head', {title: "Beddit - " + info.name}) %>
+<%- include('../partials/head', {title: "EzDoubt - " + info.name}) %>
 
 <body>
     <%- include('../partials/nav', {user: locals.user, karma}) %>
@@ -16,7 +16,7 @@
         <div class="main">
             <%- include('../partials/sort') %>
 
-            <% if (posts != undefined) { 
+            <% if (posts != undefined) {
                     posts.forEach((post) => { %>
             <article class="post" data-ref="<%= post._id %>">
                 <div class="arrows">
