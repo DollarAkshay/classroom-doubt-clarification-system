@@ -17,12 +17,12 @@
             <h4>new subbeddit</h4>
             <div class="submit-wrapper">
                 <% if(!locals.user) { %>
-                    You must be logged in to submit a post / link / subbeddit.
+                    You must be logged in to submit a post / subjuect.
                 <% } else { %>
                 <form id="form-subreddit" action="/submit/subreddit" method="post">
-                    <input type="text" class="form-control" name="subreddit" id="subreddit_form" placeholder="Enter subbeddit" required>
-                    <div class="invalid-feedback">That subbeddit already exists!</div><br>
-                    <textarea class="form-control" rows="5" name="description" placeholder="Enter description" required></textarea><br>
+                    <input type="text" class="form-control" name="subreddit" id="subreddit_form" placeholder="Enter Subject" required>
+                    <div class="invalid-feedback">That subject already exists!</div><br>
+                    <textarea class="form-control" rows="5" name="description" placeholder="Enter Description" required></textarea><br>
                     <button type="submit" class="btn btn-primary auth-req">Submit</button>
                 </form>
                 <% } %>

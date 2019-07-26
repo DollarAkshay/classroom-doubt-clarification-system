@@ -15,14 +15,14 @@
         </div>
 
         <div class="main">
-            <h4>new post</h4>
+            <h4>New Post</h4>
             <div class="submit-wrapper">
                     <% if(!locals.user) { %>
-                        You must be logged in to submit a post / link / subbeddit.
-                    <% } else { %>      
+                        You must be logged in to submit a post / subject.
+                    <% } else { %>
                 <form action="/r/<%= info.name %>/submit/post" method="post">
-                    <input type="text" class="form-control" name="title" placeholder="Enter title" required><br>
-                    <textarea class="form-control" rows="5" name="body" placeholder="Enter body" required></textarea><br>
+                    <input type="text" class="form-control" name="title" placeholder="Enter Title" required><br>
+                    <textarea class="form-control" rows="5" name="body" placeholder="Enter Body" required></textarea><br>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 <% } %>

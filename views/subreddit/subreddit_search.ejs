@@ -11,18 +11,18 @@
         <div class="sidebar">
                 <form id="form-search" action="/r/<%=info.name%>/search/" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="query" placeholder="Find a post" value="<%= query %>"required>
+                        <input type="text" class="form-control" name="query" placeholder="Find a Post" value="<%= query %>"required>
                         <div class="input-group-append">
                             <button class="btn btn-primary submit" type="submit">Search</button>
                         </div>
                     </div>
-                </form>         
+                </form>
                 <div class="btn-group" style="width: 100%">
                         <a class="btn btn-success auth-req" href="/r/<%=info.name%>/submit/link" id="submit-link" style="width: 100%">New link</a>
                         <a class="btn btn-primary auth-req" href="/r/<%=info.name%>/submit/post" id="submit-post" style="width: 100%">New post</a>
                         </div>
                         <br><br>
-                        
+
                     <% if(locals.isauth) { %>
                         <% if(state == false) { %>
                             <a class="btn btn-block btn-light auth-req" href="javascript:void(0)" id="subscribe">Subscribe</a>
@@ -42,15 +42,15 @@
             <h4>Results (<%= posts.length %>)</h4>
             <% } %>
 
-            <% if (posts != undefined) { 
+            <% if (posts != undefined) {
                 posts.forEach((post) => { %>
                     <article class="post" data-ref="<%= post._id %>">
                             <div class="arrows">
-                                    <div class="upvote-post auth-req"><i class="far fa-caret-square-up"></i></div> 
+                                    <div class="upvote-post auth-req"><i class="far fa-caret-square-up"></i></div>
                                     <span class="post-votes" data-ref="<%= post._id %>"><%= post.votes %></span>
                                     <div class="downvote-post auth-req"><i class="far fa-caret-square-down"></i></div>
                             </div>
-            
+
                             <% if(post.type == "img") { %>
                             <a href="<%= post.link %>"><img src="<%=post.link%>" height="55" width="55" class="thumbnail"></a>
                             <% } else if (post.type == "link") { %>
@@ -58,7 +58,7 @@
                             <% } else { %>
                             <a href="/r/<%= post.subreddit %>/<%= post._id %>"><img src="/images/post.png" height="55" width="55" class="thumbnail"></a>
                             <% } %>
-            
+
                             <div class="info">
                                 <header>
                                     <% if(post.type == "post") { %>
@@ -66,7 +66,7 @@
                                     <%  } else { %>
                                     <a href="<%= post.link %>"><%= post.title %></a>
                                     <% } %>
-            
+
                                 </header>
                                 <div>
                                     submitted <time title="<%= post.time %>">-</time>
@@ -79,7 +79,7 @@
                                     <% if(post.username == locals.user) { %>
                                         <li><a href="javascript:void(0)" class="delete-post auth-req">delete</a></li>
                                     <% } %>
-            
+
                                 </ul>
                             </div>
                         </article>
@@ -102,4 +102,3 @@
 
 </body>
 </html>
-

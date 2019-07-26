@@ -13,7 +13,7 @@
                 <div id="profile-info">
                     Karma: <span class="karma"><%=karma%></span>
                     Joined: <span class="joined"><%= created %></span>
-                </div>            
+                </div>
             <a class="btn btn-block btn-outline-primary" href="/u/<%= profile_user %>/posts">Posts</a><br>
             <a class="btn btn-block btn-outline-primary" href="/u/<%= profile_user %>/comments">Comments</a><br>
             <div class="btn-group" style="width: 100%">
@@ -35,10 +35,10 @@
                     </tr>
                 <% }); %>
                     <% if(subscribed.length == 0) { %>
-                        They are not subscribed to any subbeddit
+                        They are not subscribed to any Subject
                     <% } %>
                 <% } else { %>
-                    <span class="text-center">They are not subscribed to any subbeddit</span>
+                    <span class="text-center">They are not subscribed to any Subject</span>
                 <% } %>
             </tbody>
             </table>
@@ -47,7 +47,7 @@
         <div class="main">
                 <%- include('../partials/sort') %>
 
-                <% if (comments != undefined) { 
+                <% if (comments != undefined) {
                     comments.forEach((comment) => { %>
 
             <div class="comment-wrapper">
@@ -63,8 +63,8 @@
                         </div>
                     <hr>
                     <ul>
-                        <li><span><a href="/u/<%= comment.username %>"><%= comment.username %></a></span></li> • 
-                        <li><span class="comment-votes"><%= comment.votes %></span> points</li> • 
+                        <li><span><a href="/u/<%= comment.username %>"><%= comment.username %></a></span></li> •
+                        <li><span class="comment-votes"><%= comment.votes %></span> points</li> •
                         <time title="<%= comment.time %>">-</time> </li>
                     </ul>
                     <div class="comment-body"><%= comment.body %></div>
@@ -72,13 +72,13 @@
                         <li>
                             <i class="far fa-caret-square-up upvote-comment auth-req"></i>
                             <i class="far fa-caret-square-down downvote-comment auth-req"></i>
-                        </li>   
+                        </li>
 
-                        <li><a href="javascript:void(0)" class="save-comment auth-req">save</a></li>
+                        <li><a href="javascript:void(0)" class="save-comment auth-req">Save</a></li>
 
                             <% if(comment.username == locals.user) { %>
-                            <li><span><a href="javascript:void(0)" class="edit-comment auth-req">edit</a></span></li>
-                            <li><span><a href="javascript:void(0)" class="delete-comment auth-req">delete</a></span></li>
+                            <li><span><a href="javascript:void(0)" class="edit-comment auth-req">Edit</a></span></li>
+                            <li><span><a href="javascript:void(0)" class="delete-comment auth-req">Delete</a></span></li>
                             <% } %>
                     </ul>
                 </article>
@@ -91,7 +91,7 @@
             They are no saved comments.
             <% } %>
 
-        
+
         </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

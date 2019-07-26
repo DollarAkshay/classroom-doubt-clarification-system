@@ -14,13 +14,13 @@
                 <%- include('../partials/sidebar_subreddit_info', {desc: info.description}) %>
         </div>
 
-        
+
         <div class="main">
             <h4>new link</h4>
             <div class="submit-wrapper">
                     <% if(!locals.user) { %>
-                        You must be logged in to submit a post / link / subbeddit.
-                    <% } else { %>                
+                        You must be logged in to submit a post / subject.
+                    <% } else { %>
                 <form action="/r/<%= info.name %>/submit/link" method="post">
                     <input type="text" class="form-control" name="title" placeholder="Enter title" required><br>
                     <input type="text" class="form-control" name="link" placeholder="Enter link" required><br>
