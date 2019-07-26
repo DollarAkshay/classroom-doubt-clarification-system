@@ -34,7 +34,7 @@
                     <% if (subscribed != undefined) { %>
                     <% subscribed.forEach((s) => { %>
                     <tr>
-                        <td><a href="/r/<%= s %>">/r/<%= s %></a></td>
+                        <td><a href="/r/<%= s %>"><%= s %></a></td>
                     </tr>
                     <% }); %>
                     <% if(subscribed.length == 0) { %>
@@ -80,7 +80,7 @@
                     <div>
                         submitted <time title="<%= post.time %>">-</time>
                         by <span class="post-user"><a href="/u/<%= post.username %>"><%= post.username %></a></span>
-                        from <span><a href="/r/<%= post.subject %>">/r/<%= post.subject %></a></span>
+                        from <span><a href="/r/<%= post.subject %>"><%= post.subject %></a></span>
                     </div>
                     <ul class="post-options">
                         <li><a href="/r/<%=post.subject %>/<%= post._id %>">Comments</a></li>
