@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Days+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro:900&display=swap');
 
 
 #auth {
@@ -101,7 +101,9 @@ tr {
 }
 
 .jumbotron-fluid {
+    background: url(https://cdn.pixabay.com/photo/2017/09/05/10/19/business-2717063_960_720.jpg);
     background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     border-bottom: 1px solid #ced4da;
     padding: 64px 32px;
@@ -143,7 +145,7 @@ tr {
 }
 
 #subject-name {
-    font-family: 'Days One', sans-serif;
+    font-family: 'Maven Pro', sans-serif;
     font-variant: small-caps;
     color: #ffffff;
     text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.6);
