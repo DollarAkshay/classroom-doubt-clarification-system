@@ -185,7 +185,7 @@ exports.get_post = function (req, res) {
     })
 }
 
-// CHECKING SUBREDDIT
+// CHECKING SUBJECT
 exports.check_subject = function (req, res) {
     Subject.find({
         name: req.params.subject
@@ -201,7 +201,7 @@ exports.check_subject = function (req, res) {
     });
 }
 
-// SUBSCRIBING TO SUBREDDIT
+// SUBSCRIBING TO SUBJECT
 exports.subscribe = function (req, res) {
     Profile.update({
         username: req.session.user
@@ -217,7 +217,7 @@ exports.subscribe = function (req, res) {
     })
 }
 
-// UNSUBSCRIBE FROM SUBREDDIT
+// UNSUBSCRIBE FROM SUBJECT
 exports.unsubscribe = function (req, res) {
     Profile.update({
         username: req.session.user

@@ -244,7 +244,7 @@ exports.front_link = function (req, res) {
 }
 
 
-// SUBMITING A SUBREDDIT
+// SUBMITING A SUBJECT
 exports.subject = function (req, res) {
     Profile.update({
             username: req.session.user
