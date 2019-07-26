@@ -4,7 +4,7 @@
         <% if (subjects != undefined) {
     subjects.forEach((s) => { %>
         <tr>
-            <td><a href="/r/<%= s.name %>">/r/<%= s.name %></a></td>
+            <td><a href="/r/<%= s.name %>"><%= s.name %></a></td>
         </tr>
         <% }); %>
         <% if(subjects.length == 0) { %>
