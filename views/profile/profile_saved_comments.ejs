@@ -32,7 +32,7 @@
                     <% if (subscribed != undefined) { %>
                     <% subscribed.forEach((s) => { %>
                     <tr>
-                        <td><a href="/r/<%= s %>">/r/<%= s %></a></td>
+                        <td><a href="/r/<%= s %>"><%= s %></a></td>
                     </tr>
                     <% }); %>
                     <% if(subscribed.length == 0) { %>
@@ -63,7 +63,7 @@
                         by <span class="comment-user"><a
                                 href="/u/<%= comment.parent[0].username %>"><%= comment.parent[0].username %></a></span>
                         from <span><a
-                                href="/r/<%= comment.parent[0].subject %>">/r/<%= comment.parent[0].subject %></a></span>
+                                href="/r/<%= comment.parent[0].subject %>"><%= comment.parent[0].subject %></a></span>
                     </div>
                     <hr>
                     <ul>

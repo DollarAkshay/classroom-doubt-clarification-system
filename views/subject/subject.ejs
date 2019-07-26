@@ -46,7 +46,7 @@
                     <div>
                         submitted <time title="<%= post.time %>">-</time>
                         by <span class="post-user"><a href="/u/<%= post.username %>"><%= post.username %></a></span>
-                        from <span><a href="/r/<%= post.subject %>">/r/<%= post.subject %></a></span>
+                        from <span><a href="/r/<%= post.subject %>"><%= post.subject %></a></span>
                     </div>
                     <ul class="post-options">
                         <li><a href="/r/<%=post.subject %>/<%= post._id %>"><%=post.num_of_comments%> comments</a></li>

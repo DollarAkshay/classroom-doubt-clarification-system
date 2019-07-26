@@ -1,16 +1,16 @@
 <% if(isAuth) { %>
-    <h4 class="text-center">Subscribed (<%=subscribed.length %>)</h4>
-    <table class="table table-striped">
-        <tbody>
-    <% if (subscribed != undefined) { %>
+<h4 class="text-center">Subscribed (<%=subscribed.length %>)</h4>
+<table class="table table-striped">
+    <tbody>
+        <% if (subscribed != undefined) { %>
         <% subscribed.forEach((s) => { %>
-            <tr>
-            <td><a href="/r/<%= s %>">/r/<%= s %></a></td>
-            </tr>
+        <tr>
+            <td><a href="/r/<%= s %>"><%= s %></a></td>
+        </tr>
         <% }); %>
         <% } else { %>
-            <span class="text-center">You are not subscribed to any Subject</span>
+        <span class="text-center">You are not subscribed to any Subject</span>
         <% } %>
     </tbody>
-    </table>
-    <% } %>
+</table>
+<% } %>
