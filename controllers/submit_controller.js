@@ -1,8 +1,8 @@
-let Subreddit = require("../models/subreddit");
+let Subject = require("../models/subject");
 let Post = require("../models/post");
 let Profile = require("../models/profile");
 
-exports.subreddit_post_view = function (req, res) {
+exports.subject_post_view = function (req, res) {
     let subscribed = false
     let karma = 0
 
@@ -18,24 +18,24 @@ exports.subreddit_post_view = function (req, res) {
 
     Profile.find({
         username: req.session.user,
-        subscribed: req.params.subreddit,
+        subscribed: req.params.subject,
     }, function (err, doc) {
         if (err) throw err;
 
         if (!doc.length) {
-            // res.send("Unable to find subreddit state")
+            // res.send("Unable to find subject state")
             return;
         } else {
             subscribed = true
         }
     }).then(function () {
-        Subreddit.find({
-            name: req.params.subreddit
+        Subject.find({
+            name: req.params.subject
         }, function (err, doc) {
             if (err) throw err
 
             if (doc.length) {
-                res.render('./subreddit/subreddit_post', {
+                res.render('./subject/subject_post', {
                     info: doc[0],
                     karma: karma,
                     state: subscribed,
@@ -45,21 +45,21 @@ exports.subreddit_post_view = function (req, res) {
         })
     })
 }
-exports.subreddit_post = function (req, res) {
+exports.subject_post = function (req, res) {
     Post({
         title: req.body.title,
         body: req.body.body,
         username: req.session.user,
         type: "post",
-        subreddit: req.params.subreddit,
+        subject: req.params.subject,
     }).save(function (err, doc) {
         if (err) throw err;
 
-        console.log(`[${req.params.subreddit}] post submitted!`)
-        res.redirect(`/r/${req.params.subreddit}`)
+        console.log(`[${req.params.subject}] post submitted!`)
+        res.redirect(`/r/${req.params.subject}`)
     })
 }
-exports.subreddit_link_view = function (req, res) {
+exports.subject_link_view = function (req, res) {
     let subscribed = false;
     let karma = 0
 
@@ -76,24 +76,24 @@ exports.subreddit_link_view = function (req, res) {
 
     Profile.find({
         username: req.session.user,
-        subscribed: req.params.subreddit,
+        subscribed: req.params.subject,
     }, function (err, doc) {
         if (err) throw err;
 
         if (!doc.length) {
-            // res.send("Unable to find subreddit state")
+            // res.send("Unable to find subject state")
             return;
         } else {
             subscribed = true
         }
     }).then(function () {
-        Subreddit.find({
-            name: req.params.subreddit
+        Subject.find({
+            name: req.params.subject
         }, function (err, doc) {
             if (err) throw err
 
             if (doc.length) {
-                res.render('./subreddit/subreddit_link', {
+                res.render('./subject/subject_link', {
                     info: doc[0],
                     karma: karma,
                     state: subscribed,
@@ -103,7 +103,7 @@ exports.subreddit_link_view = function (req, res) {
         })
     })
 }
-exports.subreddit_link = function (req, res) {
+exports.subject_link = function (req, res) {
     let type = "link"
 
     function checkURL(url) {
@@ -120,17 +120,17 @@ exports.subreddit_link = function (req, res) {
         username: req.session.user,
         type: type,
         link: req.body.link,
-        subreddit: req.params.subreddit,
+        subject: req.params.subject,
     }).save(function (err, doc) {
         if (err) throw error;
 
-        console.log(`[${req.params.subreddit}] link submitted!`)
-        res.redirect(`/r/${req.params.subreddit}`)
+        console.log(`[${req.params.subject}] link submitted!`)
+        res.redirect(`/r/${req.params.subject}`)
     })
 }
 
-exports.subreddit_search = function (req, res) {
-    let subreddit = undefined
+exports.subject_search = function (req, res) {
+    let subject = undefined
     let posts = undefined
     let subscribed = false
     let karma = 0
@@ -145,23 +145,23 @@ exports.subreddit_search = function (req, res) {
         }
     });
 
-    Subreddit.find({
-        name: req.params.subreddit
+    Subject.find({
+        name: req.params.subject
     }, function (err, doc) {
         if (err) throw err
 
         if (doc.length) {
-            subreddit = doc[0]
+            subject = doc[0]
         }
     }).then(function () {
         Profile.find({
             username: req.session.user,
-            subscribed: req.params.subreddit,
+            subscribed: req.params.subject,
         }, function (err, doc) {
             if (err) throw err;
 
             if (!doc.length) {
-                // res.send("Unable to find subreddit state")
+                // res.send("Unable to find subject state")
                 return;
             } else {
                 subscribed = true
@@ -169,7 +169,7 @@ exports.subreddit_search = function (req, res) {
         }).then(function () {
             Post.find({
                 $and: [{
-                        subreddit: req.params.subreddit
+                        subject: req.params.subject
                     },
                     {
                         title: {
@@ -186,9 +186,9 @@ exports.subreddit_search = function (req, res) {
                     posts = result
                 }
 
-                console.log(`[${req.params.subreddit}] searching for posts which contain '{${req.body.query}}'`)
-                res.render("./subreddit/subreddit_search", {
-                    info: subreddit,
+                console.log(`[${req.params.subject}] searching for posts which contain '{${req.body.query}}'`)
+                res.render("./subject/subject_search", {
+                    info: subject,
                     posts: result,
                     karma: karma,
                     state: subscribed,
@@ -208,12 +208,12 @@ exports.front_post = function (req, res) {
         body: req.body.text,
         username: req.session.user,
         type: "post",
-        subreddit: req.body.subreddit,
+        subject: req.body.subject,
     }).save(function (err, doc) {
         if (err) throw err;
 
-        console.log(`[Frontpage] post submitted to [${req.body.subreddit}]`)
-        res.redirect(`/r/${req.body.subreddit}/${doc._id}/comments`);
+        console.log(`[Frontpage] post submitted to [${req.body.subject}]`)
+        res.redirect(`/r/${req.body.subject}/${doc._id}/comments`);
     });
 }
 
@@ -234,37 +234,37 @@ exports.front_link = function (req, res) {
         link: req.body.link,
         username: req.session.user,
         type: type,
-        subreddit: req.body.subreddit,
+        subject: req.body.subject,
     }).save(function (err, doc) {
         if (err) throw err;
 
-        console.log(`[Frontpage] link submitted to [${req.body.subreddit}]`)
-        res.redirect(`/r/${req.body.subreddit}/${doc._id}/comments`);
+        console.log(`[Frontpage] link submitted to [${req.body.subject}]`)
+        res.redirect(`/r/${req.body.subject}/${doc._id}/comments`);
     });
 }
 
 
 // SUBMITING A SUBREDDIT
-exports.subreddit = function (req, res) {
+exports.subject = function (req, res) {
     Profile.update({
             username: req.session.user
         }, {
             $push: {
-                owned: req.body.subreddit
+                owned: req.body.subject
             }
         },
         function (err, doc) {
             if (err) throw err;
 
         }).then(function () {
-        Subreddit({
-            name: req.body.subreddit,
+        Subject({
+            name: req.body.subject,
             description: req.body.description
         }).save(function (err, doc) {
             if (err) throw err
 
-            console.log(`[Frontpage] ${req.body.subreddit} subreddit created`)
-            res.redirect(`/r/${req.body.subreddit}`);
+            console.log(`[Frontpage] ${req.body.subject} subject created`)
+            res.redirect(`/r/${req.body.subject}`);
         });
     });
 }
@@ -272,7 +272,7 @@ exports.subreddit = function (req, res) {
 // SEARCHING FOR A POST
 exports.front_search = function (req, res) {
     let subscribed = undefined;
-    let subreddits = undefined;
+    let subjects = undefined;
     let posts = undefined;
     let karma = 0;
 
@@ -286,11 +286,11 @@ exports.front_search = function (req, res) {
             }
         })
         .then(function () {
-            Subreddit.find({}, function (err, doc) {
+            Subject.find({}, function (err, doc) {
                     if (err) throw err;
 
                     if (doc.length) {
-                        subreddits = doc
+                        subjects = doc
                     }
                 })
                 .then(function () {
@@ -312,7 +312,7 @@ exports.front_search = function (req, res) {
                             console.log(`[Frontpage] searching for posts which contain '{${req.body.query}}'`)
                             res.render("./front/front_search", {
                                 posts: result,
-                                subreddits: subreddits,
+                                subjects: subjects,
                                 subscribed: subscribed,
                                 karma: karma,
                                 query: req.body.query,
@@ -389,7 +389,7 @@ exports.front_link_view = function (req, res) {
         });
     })
 }
-exports.subreddit_view = function (req, res) {
+exports.subject_view = function (req, res) {
     let subscribed = undefined;
     let karma = 0;
 
@@ -403,7 +403,7 @@ exports.subreddit_view = function (req, res) {
             karma = result[0]['karma_post'] + result[0]['karma_comment']
         }
 
-        res.render("./front/front_subreddit", {
+        res.render("./front/front_subject", {
             isAuth: req.isAuthenticated(),
             karma: karma,
             subscribed: result[0]['subscribed']

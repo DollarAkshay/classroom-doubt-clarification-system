@@ -1,11 +1,11 @@
-let Subreddit = require("../models/subreddit");
+let Subject = require("../models/subject");
 let Post = require("../models/post");
 let Profile = require("../models/profile");
 let PostState = require("../models/postState")
 
 exports.get_all = function (req, res) {
     let subscribed = undefined;
-    let subreddits = undefined;
+    let subjects = undefined;
     let posts = undefined;
     let karma = 0;
     let sort = undefined;
@@ -42,11 +42,11 @@ exports.get_all = function (req, res) {
             karma = result[0]['karma_post'] + result[0]['karma_comment']
         }
     }).then(function () {
-        Subreddit.find({}, function (err, doc) {
+        Subject.find({}, function (err, doc) {
             if (err) throw err;
 
             if (doc.length) {
-                subreddits = doc
+                subjects = doc
             }
         }).then(function () {
             PostState.find({
@@ -67,7 +67,7 @@ exports.get_all = function (req, res) {
                     console.log(`[Frontpage] fetching posts!`)
                     res.render("./front/front", {
                         posts: posts,
-                        subreddits: subreddits,
+                        subjects: subjects,
                         subscribed: subscribed,
                         karma: karma,
                         isAuth: req.isAuthenticated()

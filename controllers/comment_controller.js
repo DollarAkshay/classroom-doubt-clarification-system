@@ -29,7 +29,7 @@ exports.comment = function (req, res) {
             console.log("something went wrong")
         }
         if (result.length) {
-            console.log(`[${req.params.subreddit}] number of comment updated!`)
+            console.log(`[${req.params.subject}] number of comment updated!`)
         }
     })
 
@@ -40,8 +40,8 @@ exports.comment = function (req, res) {
     }).save(function (err, doc) {
         if (err) throw err
 
-        console.log(`[${req.params.subreddit}] comment posted!`)
-        res.redirect(`/r/${req.params.subreddit}/${req.params.id}/comments`)
+        console.log(`[${req.params.subject}] comment posted!`)
+        res.redirect(`/r/${req.params.subject}/${req.params.id}/comments`)
     })
 }
 
@@ -72,7 +72,7 @@ exports.delete = function (req, res) {
             if (err) throw err;
 
             if (result.length) {
-                console.log(`[${req.params.subreddit}] number of comment updated!`)
+                console.log(`[${req.params.subject}] number of comment updated!`)
             }
         })
     }).catch((err) => {

@@ -19,9 +19,9 @@ $("document").ready(function () {
         }
     });
 
-    // event handler for when user subscribes to subreddit
+    // event handler for when user subscribes to subject
     $("#subscribe").click(function () {
-        let sub = $("#subreddit-name").text();
+        let sub = $("#subject-name").text();
         let that = $(this)
 
         // if current text is subscribe, update subscription in database

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
     username: String,
-    subreddit: String,
+    subject: String,
     title: String,
     body: String,
     time: {

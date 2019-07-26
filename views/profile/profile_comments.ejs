@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-        <%- include('../partials/head', {title: "/u/" + profile_user + " - comments" }) %>
+<%- include('../partials/head', {title: "/u/" + profile_user + " - comments" }) %>
 
 <body>
     <%- include('../partials/nav', {user: locals.user, karma}) %>
@@ -9,61 +9,66 @@
 
     <div class="grid-container">
         <div class="sidebar">
-                <img id="profile-pic" src="/images/default.png" height="134" width="134"><br>
-                <div id="profile-info">
-                        Karma: <span class="karma"><%=karma%></span>
-                        Joined: <span class="joined"><%= created %></span>
-                    </div>
+            <img id="profile-pic" src="/images/default.png" height="134" width="134"><br>
+            <div id="profile-info">
+                Karma: <span class="karma"><%=karma%></span>
+                Joined: <span class="joined"><%= created %></span>
+            </div>
             <a class="btn btn-block btn-outline-primary" href="/u/<%= profile_user %>/posts">Posts</a><br>
             <a class="btn btn-block btn-primary" href="/u/<%= profile_user %>/comments">Comments</a><br>
             <div class="btn-group" style="width: 100%">
-                <button type="button" class="btn btn-block btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Saved
+                <button type="button" class="btn btn-block btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Saved
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/u/<%= profile_user %>/saved/posts">Saved Posts</a>
-                  <a class="dropdown-item" href="/u/<%= profile_user %>/saved/comments">Saved Comments</a>
+                    <a class="dropdown-item" href="/u/<%= profile_user %>/saved/posts">Saved Posts</a>
+                    <a class="dropdown-item" href="/u/<%= profile_user %>/saved/comments">Saved Comments</a>
                 </div>
-              </div><br><br>
+            </div><br><br>
             <h4 class="text-center">Subscribed (<%= subscribed.length %>)</h4>
             <table class="table table-striped">
                 <tbody>
-            <% if (subscribed != undefined) { %>
-                <% subscribed.forEach((s) => { %>
+                    <% if (subscribed != undefined) { %>
+                    <% subscribed.forEach((s) => { %>
                     <tr>
-                    <td><a href="/r/<%= s %>">/r/<%= s %></a></td>
+                        <td><a href="/r/<%= s %>">/r/<%= s %></a></td>
                     </tr>
-                <% }); %>
+                    <% }); %>
                     <% if(subscribed.length == 0) { %>
-                        They are not subscribed to any Subject
+                    They are not subscribed to any Subject
                     <% } %>
-                <% } else { %>
+                    <% } else { %>
                     <span class="text-center">They are not subscribed to any Subject</span>
-                <% } %>
-            </tbody>
+                    <% } %>
+                </tbody>
             </table>
         </div>
 
         <div class="main">
-                <%- include('../partials/sort') %>
+            <%- include('../partials/sort') %>
 
-                <% if (comments != undefined) {
+            <% if (comments != undefined) {
                     comments.forEach((comment) => { %>
 
             <div class="comment-wrapper">
                 <article class="comment" data-ref="<%= comment._id %>">
                     <header>
-                        <a href="/r/<%= comment.parent[0].subreddit %>/<%= comment.parent[0]._id %>"><%= comment.parent[0].title %></a>
+                        <a
+                            href="/r/<%= comment.parent[0].subject %>/<%= comment.parent[0]._id %>"><%= comment.parent[0].title %></a>
 
                     </header>
                     <div>
-                            submitted <time title="<%= comment.parent[0].time %>">-</time>
-                            by <span><a href="/u/<%= comment.parent[0].username %>"><%= comment.parent[0].username %></a></span>
-                            from <span><a href="/r/<%= comment.parent[0].subreddit %>">/r/<%= comment.parent[0].subreddit %></a></span>
-                        </div>
+                        submitted <time title="<%= comment.parent[0].time %>">-</time>
+                        by <span><a
+                                href="/u/<%= comment.parent[0].username %>"><%= comment.parent[0].username %></a></span>
+                        from <span><a
+                                href="/r/<%= comment.parent[0].subject %>">/r/<%= comment.parent[0].subject %></a></span>
+                    </div>
                     <hr>
                     <ul>
-                        <li><span class="comment-user"><a href="/u/<%= comment.username %>"><%= comment.username %></a></span></li> •
+                        <li><span class="comment-user"><a
+                                    href="/u/<%= comment.username %>"><%= comment.username %></a></span></li> •
                         <li><span class="comment-votes"><%= comment.votes %></span> points</li> •
                         <time title="<%= comment.time %>">-</time> </li>
                     </ul>
@@ -76,33 +81,33 @@
 
                         <li><a href="javascript:void(0)" class="save-comment auth-req">save</a></li>
 
-                            <% if(comment.username == locals.user) { %>
-                            <li><span><a href="javascript:void(0)" class="edit-comment auth-req">Edit</a></span></li>
-                            <li><span><a href="javascript:void(0)" class="delete-comment auth-req">Delete</a></span></li>
-                            <% } %>
+                        <% if(comment.username == locals.user) { %>
+                        <li><span><a href="javascript:void(0)" class="edit-comment auth-req">Edit</a></span></li>
+                        <li><span><a href="javascript:void(0)" class="delete-comment auth-req">Delete</a></span></li>
+                        <% } %>
                     </ul>
                 </article>
             </div>
             <% });%>
-                <% if(comments.length == 0) { %>
-                    There are no comments.
-                <% } %>
+            <% if(comments.length == 0) { %>
+            There are no comments.
+            <% } %>
             <% } else { %>
             There are no comments.
             <% } %>
 
         </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/autosize@4.0.2/dist/autosize.min.js"></script>
-        <script src="/js/load.js"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/autosize@4.0.2/dist/autosize.min.js"></script>
+    <script src="/js/load.js"></script>
 
-        <script src="/js/index.js"></script>
-        <script src="/js/comment.js"></script>
-        <script src="/js/sort.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/comment.js"></script>
+    <script src="/js/sort.js"></script>
 
 </body>
 

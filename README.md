@@ -9,7 +9,7 @@ https://seiya-beddit.herokuapp.com/
 
 ### Features:
 * Frontpage
-* Subreddits
+* Subjects
 * Submitting comments / posts / links
 * Voting on posts / comments
 * Saving posts / comments
@@ -31,7 +31,7 @@ https://seiya-beddit.herokuapp.com/
 URL | Method | Details | Body
 ---- | ---- | ---- | ----
 /api/frontpage | GET | Retrieves all posts from frontpage
-/api/r/```subreddit``` | GET | Retrieves all posts from ```subreddit```
+/api/r/```subject``` | GET | Retrieves all posts from ```subject```
 /api/post/```id``` | GET | Retrieves post by ```id```
 /api/post/```id```/comments | GET | Retrieves all comments for post by ```id```
 /api/u/```user``` | GET | Retrieves profile information about ```user```

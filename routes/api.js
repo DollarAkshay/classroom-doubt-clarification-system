@@ -9,9 +9,9 @@ let Profile = require("../models/profile");
 let Account = require("../models/account");
 
 
-router.get('/r/:subreddit', function (req, res) {
+router.get('/r/:subject', function (req, res) {
     Post.find({
-            subreddit: req.params.subreddit
+            subject: req.params.subject
         })
         .sort({
             votes: '-1'
@@ -23,7 +23,7 @@ router.get('/r/:subreddit', function (req, res) {
             } else {
                 res.status(404);
                 res.json({
-                    error: `Unable to find posts from /r/${req.params.subreddit}`
+                    error: `Unable to find posts from /r/${req.params.subject}`
                 })
             }
         })

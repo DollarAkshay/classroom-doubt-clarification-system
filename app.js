@@ -36,7 +36,7 @@ app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/front'));
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/settings'));
-app.use('/r/', require('./routes/subreddit'));
+app.use('/r/', require('./routes/subject'));
 app.use('/u/', require('./routes/profile'));
 app.use('/api', require('./routes/api'));
 

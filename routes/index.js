@@ -5,7 +5,7 @@ const router = express.Router();
 // CONTROLLERS
 let post_controller = require('../controllers/post_controller')
 let comment_controller = require('../controllers/comment_controller')
-let subreddit_controller = require('../controllers/subreddit_controller')
+let subject_controller = require('../controllers/subject_controller')
 
 // POSTS ROUTES
 router.put('/edit/post/:id', post_controller.edit);
@@ -24,8 +24,8 @@ router.put('/vote/comment/:id', comment_controller.vote);
 router.get('/check/states/comments', comment_controller.check);
 
 // SUBBREDDIT ROUTES
-router.get('/submit/check/:subreddit', subreddit_controller.check_subreddit);
-router.put('/subscribe/:subreddit', subreddit_controller.subscribe);
-router.put('/unsubscribe/:subreddit', subreddit_controller.unsubscribe);
+router.get('/submit/check/:subject', subject_controller.check_subject);
+router.put('/subscribe/:subject', subject_controller.subscribe);
+router.put('/unsubscribe/:subject', subject_controller.unsubscribe);
 
 module.exports = router;
