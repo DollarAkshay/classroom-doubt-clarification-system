@@ -5,6 +5,10 @@
     display: none;
 }
 
+.record-post{
+    font-weight: bold;
+    color: #02b35a;
+}
 
 .grid-container {
     margin-left: 15px;
