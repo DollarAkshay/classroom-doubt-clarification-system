@@ -99,8 +99,8 @@
                 })
                 .done(function (data) {
 
-                    if (data.hits.length >= 5) {
-                        var imageURL = data.hits[4].largeImageURL;
+                    if (data.hits.length >= 4) {
+                        var imageURL = data.hits[3].largeImageURL;
                         console.log("Image URL :", imageURL);
                         $('.jumbotron').css('background-image', 'url(' + imageURL + ')');
                     }

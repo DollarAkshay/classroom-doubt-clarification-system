@@ -152,5 +152,7 @@ tr {
     font-family: 'Maven Pro', sans-serif;
     font-variant: small-caps;
     color: #ffffff;
-    text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0px 12px;
+    /* text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.6); */
 }
