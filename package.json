@@ -1,7 +1,7 @@
 {
-  "name": "reddit-npm",
+  "name": "ezdoubt",
   "version": "1.0.0",
-  "description": "A reddit clone",
+  "description": "A easy way to ask doubts",
   "engines": {
     "node": "8.11.4"
   },
